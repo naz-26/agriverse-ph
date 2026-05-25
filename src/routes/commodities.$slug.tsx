@@ -1,10 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Calendar, Globe2, Leaf, MapPin, TrendingUp } from "lucide-react";
 import SiteLayout from "@/components/site/SiteLayout";
-import { commodities, getCommodity } from "@/lib/commodities";
+import { commodities, getCommodity, type Commodity } from "@/lib/commodities";
 
 export const Route = createFileRoute("/commodities/$slug")({
-  loader: ({ params }): ReturnType<typeof getCommodity> => {
+  loader: ({ params }): Commodity => {
     const c = getCommodity(params.slug);
     if (!c) throw notFound();
     return c;
