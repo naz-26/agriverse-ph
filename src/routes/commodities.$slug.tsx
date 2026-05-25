@@ -4,7 +4,7 @@ import SiteLayout from "@/components/site/SiteLayout";
 import { commodities, getCommodity } from "@/lib/commodities";
 
 export const Route = createFileRoute("/commodities/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): ReturnType<typeof getCommodity> => {
     const c = getCommodity(params.slug);
     if (!c) throw notFound();
     return c;
