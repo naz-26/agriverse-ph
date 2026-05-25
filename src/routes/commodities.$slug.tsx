@@ -37,7 +37,7 @@ export const Route = createFileRoute("/commodities/$slug")({
 });
 
 function DetailPage() {
-  const c = Route.useLoaderData();
+  const c = Route.useLoaderData() as Commodity;
   const related = commodities.filter((x) => x.slug !== c.slug && x.type === c.type).slice(0, 3);
 
   const maxTons = Math.max(...c.production.map((p) => p.tons));
